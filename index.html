@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="wicks.css" />
+    <style>
+        body {
+            margin: 0;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 5rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="grid-column: 1/-1">
+        <h1>wicks.css</h1>
+    </div>
+
+    <div>
+        <button type="button">Button</button>
+    </div>
+
+    <div>
+        <button type="submit">Submit</button>
+    </div>
+
+    <div>
+        <label for="text">Text</label>
+        <input id="text" type="text" placeholder="Enter text" />
+    </div>
+
+    <div>
+        <label for="email">Email</label>
+        <input id="email" type="email" placeholder="Enter email" />
+    </div>
+
+    <div>
+        <label for="password">Password</label>
+        <input id="password" type="password" />
+    </div>
+
+    <div>
+        <label for="search">Search</label>
+        <input id="search" type="search" />
+    </div>
+
+    <div>
+        <label for="number">Number</label>
+        <input id="number" type="number" />
+    </div>
+
+    <div>
+        <label for="date">Date</label>
+        <input id="date" type="date" />
+    </div>
+
+    <div>
+        <label for="color">Color</label>
+        <input id="color" type="color" />
+    </div>
+
+    <div>
+        <label for="range">Range</label>
+        <input id="range" type="range" min="0" max="100" />
+    </div>
+
+    <div>
+        <label for="file">File</label>
+        <input id="file" type="file" />
+    </div>
+
+    <div>
+        <label for="select">Select</label>
+        <select id="select">
+            <option>Option One</option>
+            <option>Option Two</option>
+            <option>Option Three</option>
+        </select>
+    </div>
+
+    <div>
+        <label for="textarea">Textarea</label>
+        <textarea id="textarea" rows="4"></textarea>
+    </div>
+
+    <div>
+        <fieldset>
+            <legend>Radio Group</legend>
+            <div class="inline-group">
+                <label>
+                    <input type="radio" name="radio-group" value="one" />
+                    Option One
+                </label>
+                <label>
+                    <input type="radio" name="radio-group" value="two" />
+                    Option Two
+                </label>
+                <label>
+                    <input type="radio" name="radio-group" value="three" />
+                    Option Three
+                </label>
+            </div>
+        </fieldset>
+    </div>
+
+    <div>
+        <fieldset>
+            <legend>Checkbox Group</legend>
+            <label>
+                <input type="checkbox" value="a" name="checkbox" />
+                Checkbox A
+            </label>
+            <label>
+                <input type="checkbox" value="b" name="checkbox" />
+                Checkbox B
+            </label>
+            <label>
+                <input type="checkbox" value="c" name="checkbox" />
+                Checkbox C
+            </label>
+        </fieldset>
+    </div>
+
+
+
+    <div>
+        <details>
+            <summary>Details summary</summary>
+            <div>Details content</div>
+        </details>
+    </div>
+    <div>
+
+        <div>Table</div>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>City</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Alice</td>
+                    <td>28</td>
+                    <td>New York</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Bob</td>
+                    <td>34</td>
+                    <td>Los Angeles</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Charlie</td>
+                    <td>22</td>
+                    <td>Chicago</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Diana</td>
+                    <td>30</td>
+                    <td>Houston</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div>
+        <label for="meter">Meter</label>
+        <meter id="meter" min="0" max="100" value="50"></meter>
+    </div>
+
+    <div>
+        <label for="progress">Progress</label>
+        <progress id="progress" min="0" max="100" value="50"></progress>
+    </div>
+
+    <div>
+        <div>Icon ("i" element)</div>
+        <i data-icon="magnifying-glass"></i>
+    </div>
+
+</body>
+
+</html>

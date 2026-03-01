@@ -4,16 +4,20 @@
 
     :root {
         --primary: #3f568b;
-        --primary: rgb(66 6 127);
-        --primary: green;
+        --primary: #3e297a;
+        /* --primary: rgb(66 6 127);
+        --primary: rgb(2, 108, 2); */
         /* --secondary: rgb(233 100 52); */
-        --secondary: green;
+        --secondary: #00d0d0;
+        --secondary: #5151e6;
         --white: color-mix(in oklch, white 97%, var(--primary) 3%);
         --black: color-mix(in oklch, black 75%, var(--primary) 25%);
+        --primaryLightest: color-mix(in oklch, white 94%, var(--primary) 6%);
         --primaryLighter: color-mix(in oklch, white 90%, var(--primary) 10%);
         --primaryLight: color-mix(in oklch, white 60%, var(--primary) 40%);
         --primaryDark: color-mix(in oklch, black 25%, var(--primary) 75%);
         --primaryDarker: color-mix(in oklch, black 50%, var(--primary) 50%);
+        --secondaryLightest: color-mix(in oklch, white 94%, var(--secondary) 6%);
         --secondaryLighter: color-mix(in oklch, white 90%, var(--secondary) 10%);
         --secondaryLight: color-mix(in oklch, white 60%, var(--secondary) 40%);
         --secondaryDark: color-mix(in oklch, black 25%, var(--secondary) 75%);
@@ -30,16 +34,20 @@
         --boxShadowInset: 0px 0px 0px .03em var(--primary) inset;
 
         --dropShadow: drop-shadow(0px 0px 2px var(--primaryDark));
+        --borderRadius: 0;
 
 
         --headerHeight: 3rem;
 
 
+
+
         font: normal 16px Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif;
         color: var(--black);
-        accent-color: var(--primaryLight);
+
         box-sizing: border-box;
         interpolate-size: allow-keywords;
+        accent-color: var(--secondary);
 
     }
 
@@ -56,8 +64,7 @@
         padding: 0;
         scrollbar-width: thin;
         scrollbar-color: #888 transparent;
-
-        accent-color: var(--primaryLight);
+        accent-color: var(--secondary);
 
         &,
         &::before,
@@ -78,6 +85,8 @@
         &::-webkit-scrollbar-track {
             background: transparent;
         }
+
+
     }
 
     ::selection {
@@ -216,17 +225,14 @@
         width: 1.5rem;
         accent-color: var(--secondary);
 
-        &:focus,
-        focus-visible {
-            /* outline: 0px; */
-        }
+
     }
 
     button,
     select,
     input:not([type="checkbox"], [type="radio"]),
     textarea,
-    details:not([open]) summary,
+    details>summary,
     meter,
     progress {
 
@@ -236,7 +242,8 @@
         padding: .4rem .6rem;
         outline: 0;
         border: var(--border);
-        background-color: var(--white);
+        border-radius: var(--borderRadius);
+        background-color: var(--primaryLightest);
 
         &:disabled {
             /* Probably needs to be more gray */
@@ -246,66 +253,69 @@
         }
 
         &:hover:not(:disabled, :focus, :focus-visible, :focus-within) {
-            box-shadow: var(--boxShadow);
+            border-color: var(--secondary);
         }
 
-        /* &:is(form.submitted :invalid) {
-        border: var(--borderDanger);
-    } */
-
-        &:focus,
-        &:focus-within,
-        &:focus-visible {
-            /* box-shadow: var(--boxShadow), var(--boxShadowInset); */
-            filter: drop-shadow(0px 0px 2px var(--primaryDark));
+        &:focus-visible,
+        &:focus {
+            box-shadow: 0px 0px 0px 1px inset var(--secondary);
+            border-color: var(--secondary);
+            background-color: var(--white);
         }
 
-        &:is(button),
-        &:is(summary) {
+        &:is(button, input[type="button"], input[type="submit"], input[type="reset"], details>summary) {
             display: grid;
             place-items: center;
             min-width: 4rem;
             width: fit-content;
             max-width: 100%;
-            /* todo Text will wrap, needs line stuff to keep it on 1 line */
             text-wrap: balance;
             user-select: none;
             cursor: pointer;
-            /* background-color: var(--primaryLighter); */
+            background-color: var(--primary);
+            color: var(--white);
 
             &:active:not(:disabled) {
-                box-shadow: var(--boxShadow), var(--boxShadowInset), var(--boxShadowDark);
+                box-shadow: 0px 0px 0px 2px var(--secondary);
             }
 
-            &[type="submit"] {
-                /* Needs better focus state */
-                color: var(--white);
-                background-color: var(--primary);
-            }
+            &:is(details>summary) {
+                display: flex;
+                flex-flow: row nowrap;
+                gap: .5rem;
+                width: 100%;
 
+                &::marker,
+                &::-webkit-details-marker {
+                    display: none;
+                    content: "";
+                }
+
+                &::before {
+                    content: "";
+                    width: 0.4rem;
+                    height: 0.4rem;
+                    border-right: 1.5px solid currentColor;
+                    border-bottom: 1.5px solid currentColor;
+                    transform: rotate(var(--caret-angle));
+                    transform-origin: center;
+                    transition: --caret-angle 0.1s ease-out;
+                    flex: none;
+                }
+            }
         }
 
         &:is(select) {
             /* appearance: none; */
             cursor: pointer;
-            background-color: var(--white);
-            width: clamp(7rem, 20rem, 100%);
 
-            &:focus,
-            &:focus-visible {
-                background-color: var(--primaryLighter);
-            }
+        }
+
+        &:is([type="file"]) {
+            cursor: pointer;
         }
 
         &:is(input) {
-            background-color: var(--white);
-            width: clamp(7rem, 20rem, 100%);
-
-
-            &:focus,
-            &:focus-visible {
-                background-color: var(--primaryLighter);
-            }
 
             &[type="color"] {
                 aspect-ratio: 1/1;
@@ -321,22 +331,53 @@
                 background-position: right 0.75rem center;
                 padding-right: 2rem;
             }
+
+            &[type="range"] {
+                cursor: pointer;
+                border-width: 0px;
+                -webkit-appearance: none;
+                background: transparent;
+            }
+
+
         }
 
         &:is(textarea) {
             min-height: 6rem;
             resize: vertical;
-            background-color: var(--white);
+            background-color: var(--primaryLighter);
 
-            &:focus,
             &:focus-visible {
-                background-color: var(--primaryLighter);
+                background-color: var(--white);
+            }
+        }
+
+        /* Need to exclude from hover styles */
+        &:is(meter) {}
+
+        &:is(progress) {
+
+
+            background-color: transparent;
+
+            &::-webkit-progress-bar {
+                background-color: transparent;
+            }
+
+            &::-webkit-progress-value {
+                background-color: var(--secondary);
+            }
+
+            &::-moz-progress-bar {
+                background-color: var(--secondary);
             }
         }
     }
 
     fieldset {
         padding: .5rem 0;
+        border: var(--border);
+        background-color: var(--primaryLightest);
 
         legend {
             cursor: default;
@@ -377,7 +418,10 @@
         width: 100%;
         border-collapse: collapse;
         background-color: var(--white);
-        box-shadow: var(--boxShadow);
+        /* box-shadow: 0px 0px 0px 1px var(--secondary); */
+        border: var(--border);
+        /* display: block;
+        padding: .5rem; */
 
         th,
         td {
@@ -387,18 +431,28 @@
         }
 
         thead {
-            background-color: var(--primaryLighter);
+            background-color: var(--primaryLightest);
             font-weight: 600;
 
             th {
                 border-bottom: 1px solid var(--primary);
+
+                /* Hmmm */
+                /* &:is(table:has(tbody>tr:first-of-type:hover)) th {
+                    border-color: transparent;
+                } */
             }
+
         }
 
         tbody {
             tr {
                 &:nth-child(even) {
-                    background-color: var(--primaryLighter);
+                    background-color: var(--primaryLightest);
+                }
+
+                &:hover {
+                    /* box-shadow: 0px 0px 0px 1px inset var(--secondary); */
                 }
             }
         }
@@ -418,8 +472,11 @@
         display: block;
         height: 1.5rem;
         width: 1.5rem;
+        /* stroke: var(--primary); */
+
 
         &::before {
+            /* stroke: var(--primary); */
             content: "";
             display: block;
             background-repeat: no-repeat;
@@ -443,45 +500,13 @@
         --caret-angle: -45deg;
         overflow: hidden;
 
-        summary {
-            width: 100% !important;
-            /* display: flex;
-        align-items: center;
-        gap: 0.6rem;
-        cursor: pointer;
-        padding: 0.75rem 1rem;
-        user-select: none;
-        list-style: none; */
-
-            /* background-color: var(--primaryLighter); */
-
-            &::marker,
-            &::-webkit-details-marker {
-                display: none;
-                content: "";
-            }
-
-            &::before {
-                content: "";
-                width: 0.4rem;
-                height: 0.4rem;
-                border-right: 1.5px solid currentColor;
-                border-bottom: 1.5px solid currentColor;
-                transform: rotate(var(--caret-angle));
-                transform-origin: center;
-                transition: --caret-angle 0.1s ease-out;
-                flex: none;
-            }
-
-        }
-
         &[open] {
             box-shadow: var(--boxShadow);
             --caret-angle: 45deg;
 
-            summary {
+            /* summary {
                 background-color: var(--primaryLight);
-            }
+            } */
 
         }
 
@@ -499,19 +524,8 @@
         }
     }
 
-    progress {}
 
-    meter {}
-
-    input[type="range"] {
-        -webkit-appearance: none;
-        /* removes default styling */
-        width: 200px;
-        height: 6px;
-        background: transparent;
-        /* needed for Firefox */
-        cursor: pointer;
-    }
+    input[type="range"] {}
 
     /* Chrome, Safari, Edge */
     input[type="range"]::-webkit-slider-runnable-track {
@@ -546,8 +560,7 @@
         border: none;
     }
 
-    /* Card */
-    article {}
+
 
     section {}
 
@@ -557,36 +570,67 @@
     /* Layouts */
 
     body {
-        
+        display: grid;
+        gap: 1rem;
     }
 
-    body:has(>header) {
-        padding-top: calc(var(--headerHeight) + 1rem);
-    }
+
 
     body>header {
+        display: flex;
+        align-items: center;
+        height: fit-content;
+        gap: 1rem;
         padding: .5rem;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: var(--headerHeight);
-        z-index: 15;
+        /* position: fixed; */
+        /* top: 0;
+        left: 0; */
+        /* 
+        z-index: 15; */
         background-color: var(--primaryLighter);
         border-bottom: var(--border);
     }
 
     body>main {
-        padding: 0 2rem;
+        padding: 0 2rem 4rem 2rem;
     }
+
+    /* body:has(>header) body > main {
+        padding-top: calc(var(--headerHeight) + 1rem);
+    } */
 
     body>footer {
         min-height: 8rem;
-        margin-top: 2rem;
+        /* margin-top: 2rem; */
         padding: 2rem;
         background-color: var(--primary);
         color: var(--white);
     }
 
+    /* Card */
+    article {
+        /* border-radius: .5rem; */
+        /* corner-shape: squircle; */
+        background-color: var(--primaryLightest);
+        border: var(--border);
+        padding: 1rem;
+        display: grid;
+        gap: 1rem;
+        /* box-shadow: var(--boxShadow); */
+
+        /* Card header */
+        >header {}
+
+        /* Card content */
+        >div {}
+
+        /* Card footer */
+        >footer {}
+
+
+
+    }
+
+    menu[popover] {}
 
 }

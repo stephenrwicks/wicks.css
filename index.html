@@ -9,6 +9,18 @@
 <body>
     <header>
         wicks.css
+
+        <!-- Color changers  -->
+        <input id="primary-color" style="margin-left: auto;" type="color"
+            oninput="document.documentElement.style.setProperty('--primary', this.value)" />
+        <input id="secondary-color" type="color"
+            oninput="document.documentElement.style.setProperty('--secondary', this.value)" />
+        <script>
+            document.getElementById('primary-color').value = getComputedStyle(document.documentElement).getPropertyValue('--primary').trim();
+            document.getElementById('secondary-color').value = getComputedStyle(document.documentElement).getPropertyValue('--secondary').trim();
+        </script>
+
+
     </header>
 
     <main style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 4rem;">
@@ -20,7 +32,8 @@
         </div>
 
         <div>
-            <p>I'm working on a base stylesheet that relies on semantic html and uses zero css classes.</p>
+            <p>This is my base stylesheet that relies on semantic html and uses zero css classes. I want to write basic
+                html that looks good.</p>
 
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
                 dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
@@ -37,10 +50,7 @@
         </div>
         <div>
             <button type="button">Button</button>
-        </div>
-
-        <div>
-            <button type="submit">Submit</button>
+            <input type="button" value="Button">
         </div>
 
         <div>
@@ -105,20 +115,18 @@
         <div>
             <fieldset>
                 <legend>Radio Group</legend>
-                <div class="inline-group">
-                    <label>
-                        <input type="radio" name="radio-group" value="one" />
-                        Option One
-                    </label>
-                    <label>
-                        <input type="radio" name="radio-group" value="two" />
-                        Option Two
-                    </label>
-                    <label>
-                        <input type="radio" name="radio-group" value="three" />
-                        Option Three
-                    </label>
-                </div>
+                <label>
+                    <input type="radio" name="radio-group" value="one" />
+                    Option One
+                </label>
+                <label>
+                    <input type="radio" name="radio-group" value="two" />
+                    Option Two
+                </label>
+                <label>
+                    <input type="radio" name="radio-group" value="three" />
+                    Option Three
+                </label>
             </fieldset>
         </div>
 
@@ -202,6 +210,14 @@
             <div style="margin-bottom: .2rem;">Icon ("i" element)</div>
             <i data-icon="magnifying-glass"></i>
         </div>
+
+        <article>
+            <header>
+                <h2>Card header</h2>
+            </header>
+            <div>Card content</div>
+            <footer>Card footer</footer>
+        </article>
 
     </main>
 

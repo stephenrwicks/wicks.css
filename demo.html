@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Reset Demo Page</title>
+    <link rel="stylesheet" href="wicks.css" />
+</head>
+
+<body>
+
+    <header>
+        <h1>CSS Reset Demo Landing Page</h1>
+        <p>This page intentionally contains no classes or inline styles.</p>
+
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Features</a></li>
+                <li><a href="#">Pricing</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <section>
+            <h2>Typography</h2>
+
+            <p>This paragraph exists to test default spacing, line height, and font inheritance.
+                <strong>Strong text</strong>, <em>emphasized text</em>, <mark>marked text</mark>,
+                <small>small text</small>, and <a href="#">a link</a>.
+            </p>
+
+            <blockquote>
+                This is a blockquote to test margins and indentation.
+                <cite>— Someone Important</cite>
+            </blockquote>
+
+            <pre><code>const example = () => console.log("Code block");</code></pre>
+
+            <h3>Lists</h3>
+
+            <ul>
+                <li>Unordered item one</li>
+                <li>Unordered item two
+                    <ul>
+                        <li>Nested item</li>
+                        <li>Nested item</li>
+                    </ul>
+                </li>
+                <li>Unordered item three</li>
+            </ul>
+
+            <ol>
+                <li>Ordered item one</li>
+                <li>Ordered item two</li>
+                <li>Ordered item three</li>
+            </ol>
+        </section>
+
+        <section>
+            <h2>Buttons</h2>
+
+            <button>Default Button</button>
+            <button type="button">Button Type Button</button>
+            <button type="submit">Submit Button</button>
+            <button type="reset">Reset Button</button>
+            <a href="#" role="button">Link Button</a>
+        </section>
+
+        <section>
+            <h2>Form Elements</h2>
+
+            <form>
+
+                <div>
+                    <label for="text">Text:</label>
+                    <input id="text" type="text" placeholder="Text input">
+                </div>
+
+                <div>
+                    <label for="email">Email:</label>
+                    <input id="email" type="email" placeholder="email@example.com">
+                </div>
+
+                <div>
+                    <label for="password">Password:</label>
+                    <input id="password" type="password">
+                </div>
+
+                <div>
+                    <label for="number">Number:</label>
+                    <input id="number" type="number" min="0" max="10">
+                </div>
+
+                <div>
+                    <label for="range">Range:</label>
+                    <input id="range" type="range">
+                </div>
+
+                <div>
+                    <label for="date">Date:</label>
+                    <input id="date" type="date">
+                </div>
+
+                <div>
+                    <label for="color">Color:</label>
+                    <input id="color" type="color">
+                </div>
+
+                <div>
+                    <label for="file">File:</label>
+                    <input id="file" type="file">
+                </div>
+
+                <fieldset>
+                    <legend>Checkboxes</legend>
+
+
+                    <label>
+                        <input type="checkbox" name="checkbox1">
+                        Checkbox one
+                    </label>
+
+
+
+                    <label>
+                        <input type="checkbox" name="checkbox2">
+                        Checkbox two
+                    </label>
+
+                </fieldset>
+
+                <fieldset>
+                    <legend>Radio choices</legend>
+
+
+                    <label>
+                        <input type="radio" name="radio" value="one">
+                        Radio one
+                    </label>
+
+
+
+                    <label>
+                        <input type="radio" name="radio" value="two">
+                        Radio two
+
+                        </div>
+                </fieldset>
+
+                <div>
+                    <label for="select">Select:</label>
+                    <select id="select">
+                        <option>Option one</option>
+                        <option>Option two</option>
+                        <option>Option three</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="textarea">Textarea:</label>
+                    <textarea id="textarea" rows="4" cols="40">Example textarea content</textarea>
+                </div>
+
+                <div>
+                    <button type="reset">Reset Form</button>
+                    <button type="submit">Submit Form</button>
+                </div>
+
+            </form>
+        </section>
+
+        <section>
+            <h2>Cards</h2>
+            <div style="display: flex; flex-flow: row wrap; gap: 2rem;">
+
+                <article>
+                    <header>
+                        <h2>Card header</h2>
+                    </header>
+                    <div>Card content</div>
+                    <footer>Card footer</footer>
+                </article>
+
+                <article>
+                    <header>
+                        <h2>Card header</h2>
+                    </header>
+                    <div>
+                        Card content with <a href="#">a link</a> and inline text elements.
+                    </div>
+                    <footer>
+                        <button>Action</button>
+                    </footer>
+                </article>
+
+                <article>
+                    <header>
+                        <h2>Card header</h2>
+                    </header>
+                    <div>
+                        <p>Multiple paragraphs inside a card.</p>
+                        <p>Used to observe spacing behavior.</p>
+                    </div>
+                    <footer>Card footer</footer>
+                </article>
+            </div>
+        </section>
+
+        <section>
+            <h2>Media</h2>
+
+            <figure>
+                <img src="https://via.placeholder.com/400x200" alt="Placeholder image">
+                <figcaption>Figure caption example</figcaption>
+            </figure>
+
+        </section>
+
+        <section>
+            <h2>Tables</h2>
+
+            <table>
+                <caption>Sample Table</caption>
+                <thead>
+                    <tr>
+                        <th>Column One</th>
+                        <th>Column Two</th>
+                        <th>Column Three</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Row 1</td>
+                        <td>Value</td>
+                        <td>Value</td>
+                    </tr>
+                    <tr>
+                        <td>Row 2</td>
+                        <td>Value</td>
+                        <td>Value</td>
+                    </tr>
+                    <tr>
+                        <td>Row 3</td>
+                        <td>Value</td>
+                        <td>Value</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section>
+            <h2>Details Element</h2>
+
+            <details>
+                <summary>Expandable section</summary>
+                <p>This content appears when the details element is opened.</p>
+            </details>
+        </section>
+        <section>
+
+            <button command="show-modal" commandfor="dialog">Open dialog</button>
+            <dialog id="dialog">        <article>
+            <header>
+                <h2>Card header</h2>
+            </header>
+            <div>Card content</div>
+            <footer>Card footer</footer>
+        </article></dialog>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; Demo Footer Content</p>
+        <address>
+            Contact: <a href="mailto:test@example.com">test@example.com</a>
+        </address>
+    </footer>
+
+</body>
+
+</html>
